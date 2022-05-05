@@ -28,20 +28,6 @@ class _SigninScreenBodyState extends State<SigninScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //     title: const Center(child: Text("Logn In")),
-      //     leading: IconButton(
-      //       icon: const Icon(Icons.arrow_back_ios),
-      //       onPressed: () {
-      //         Navigator.pop(context);
-      //       },
-      //     ),
-      //     actions: const <Widget>[
-      //       Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      //         child: Icon(Icons.menu_outlined),
-      //       )
-      //     ]),
       body: _signinBody(context),
       resizeToAvoidBottomInset: false,
     );
@@ -53,68 +39,65 @@ class _SigninScreenBodyState extends State<SigninScreenBody> {
       child: Column(
         children: [
           Expanded(
+            flex: 4,
             child: Center(
               child: Image.asset("assets/images/src5.png"),
             ),
-            flex: 4,
           ),
           Expanded(
-            flex: 3,
+            flex: 2,
             child: _cols(),
           ),
           Expanded(
-            flex: 3,
-            child: Column(
+            child: _fogot(),
+            flex: 1,
+          ),
+          _inkWellCont(),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: const Center(
+              child: Text(
+                "or",
+                style: TextStyle(
+                  color: Color(0xff838391),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16.0,
+                ),
+              ),
+            ),
+          ),
+          _contRow(),
+          const Expanded(child: SizedBox()),
+          Container(
+            margin: const EdgeInsets.only(
+              bottom: 20.0,
+            ),
+            child: Row(
               children: [
-                _inkWellCont(),
                 const Expanded(
-                  child: SizedBox(
-                    child: Center(
-                      child: Text(
-                        "or",
-                        style: TextStyle(
-                          color: Color(0xff838391),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.0,
-                        ),
+                  child: SizedBox(),
+                ),
+                const Text("Don’t have an account?"),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignupScreen(),
                       ),
+                    );
+                  },
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      color: Color(0xffFFB19D),
                     ),
                   ),
                 ),
-                InkWell(
-                  child: _contRow(),
+                const Expanded(
+                  child: SizedBox(),
                 ),
               ],
-            ),
-          ),
-          const Expanded(child: SizedBox()),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 20.0),
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Center(
-                child: Row(
-                  children: [
-                    const Center(
-                      child: Text("Don’t have an account?"),
-                    ),
-                    Center(
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignupScreen()),
-                          );
-                        },
-                        child: const Text(
-                          'Sign Up',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
           ),
         ],
@@ -127,6 +110,7 @@ class _SigninScreenBodyState extends State<SigninScreenBody> {
       children: [
         Center(
           child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             margin: const EdgeInsets.symmetric(horizontal: 20.0),
             color: const Color(0xffF7F7F7),
             child: const Center(
@@ -145,6 +129,7 @@ class _SigninScreenBodyState extends State<SigninScreenBody> {
         ),
         Center(
           child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             margin: const EdgeInsets.symmetric(horizontal: 20.0),
             color: const Color(0xffF7F7F7),
             child: const Center(
@@ -159,42 +144,52 @@ class _SigninScreenBodyState extends State<SigninScreenBody> {
             height: 60.0,
           ),
         ),
-        Container(
-          margin: const EdgeInsets.only(right: 1.0),
-          child: const Center(
-            child: TextButton(
-              onPressed: null,
-              child: Text("Forgot your password?"),
+      ],
+    );
+  }
+
+  Container _fogot() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Row(
+        children: [
+          const Expanded(child: SizedBox()),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              "Forgot your password?",
+              style: TextStyle(
+                color: Color(0xffFFB19D),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget _inkWellCont() {
     return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CategoriesScreen(),
+          ),
+        );
+      },
       child: Container(
         height: 60.0,
         margin: const EdgeInsets.symmetric(horizontal: 20),
         color: const Color(0xFF20C3AF),
-        child: Center(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const CategoriesScreen(),
-                ),
-              );
-            },
-            child: const Text(
-              "Login",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 16.0,
-              ),
+        child: const Center(
+          child: Text(
+            "Login",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 16.0,
             ),
           ),
         ),
@@ -205,7 +200,7 @@ class _SigninScreenBodyState extends State<SigninScreenBody> {
   Widget _contRow() {
     return Container(
       height: 60.0,
-      margin: const EdgeInsets.symmetric(horizontal: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           Expanded(

@@ -118,8 +118,8 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody> {
           decoration: const BoxDecoration(
             color: Color.fromARGB(0, 0, 0, 0),
             border: Border(
-              
-                bottom: BorderSide(width: 1.0, color: Color.fromARGB(255, 10, 10, 10))),
+                bottom: BorderSide(
+                    width: 1.0, color: Color.fromARGB(255, 10, 10, 10))),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           alignment: Alignment.center,
@@ -134,36 +134,31 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody> {
                     children: [
                       const Center(
                         child: SizedBox(
-                          // decoration: BoxDecoration(
-                          //     shape: BoxShape.circle,
-                          //     borderRadius: BorderRadius.circular(54.0)),
                           height: 54.0,
                           width: 54.0,
                           child: CircleAvatar(
-                            backgroundImage: AssetImage('assets/images/img.png'),
-                            radius: 54.0,                       
-                          
+                            backgroundImage:
+                                AssetImage('assets/images/img.png'),
+                            radius: 54.0,
                           ),
                         ),
                       ),
                       Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Expanded(
-                                child: Text("Joel Rowe"),
+                              Text(
+                                "Joel Rowe",
                               ),
-                              Expanded(
-                                child: Text("Joel Rowe"),
+                              Text(
+                                "Bitrow Company",
                               ),
                             ],
                           ),
                         ),
                       ),
-                      const Expanded(
-                        child: SizedBox(),
-                      )
                     ],
                   ),
                 ),

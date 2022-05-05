@@ -174,12 +174,12 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
 
   Widget _signupBody(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
       child: Column(
         children: [
           Expanded(
             child: Center(
-              child: Image.asset("assets/images/src5.png"),
+              child: Image.asset("assets/images/src6.png"),
             ),
             flex: 4,
           ),
@@ -213,29 +213,36 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
             ),
           ),
           const Expanded(child: SizedBox()),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 40.0),
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Center(
-                child: Row(
-                  children: [
-                    const Text("Already have an account? "),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SigninScreen()),
-                        );
-                      },
-                      child: const Text(
-                        'Sign In',
-                      ),
-                    ),
-                  ],
+         Container(
+            margin: const EdgeInsets.only(
+              bottom: 20.0,
+            ),
+            child: Row(
+              children: [
+                const Expanded(
+                  child: SizedBox(),
                 ),
-              ),
+                const Text("Already have an account?"),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SigninScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(
+                      color: Color(0xffFFB19D),
+                    ),
+                  ),
+                ),
+                const Expanded(
+                  child: SizedBox(),
+                ),
+              ],
             ),
           ),
         ],

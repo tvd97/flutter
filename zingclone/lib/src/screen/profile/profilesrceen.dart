@@ -82,7 +82,10 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                             borderRadius: BorderRadius.circular(125),
                             border: Border.all(width: 0.5, color: Colors.black),
                           ),
-                          child: Image.asset('assets/images/src5.png'),
+                          child: const CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/avata.png'),
+                          ),
                           width: 125.0,
                           height: 125.0,
                         ),
@@ -90,7 +93,15 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                       const Expanded(
                         child: SizedBox(),
                       ),
-                      const Center(child: Text('Jeremías del Pozo')),
+                      const Center(
+                          child: Text(
+                        'Jeremías del Pozo',
+                        style: TextStyle(
+                          color: Color(0xff525464),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 24.0,
+                        ),
+                      )),
                       const Expanded(
                         child: SizedBox(),
                       ),
@@ -101,10 +112,28 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                               child: SizedBox(),
                             ),
                             Expanded(
-                              child: Center(child: Text('New York')),
+                              child: Center(
+                                child: Text(
+                                  'New York',
+                                  style: TextStyle(
+                                    color: Color(0xff838391),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
                             ),
                             Expanded(
-                              child: Center(child: Text('ID: 1120611')),
+                              child: Center(
+                                child: Text(
+                                  'ID: 1120611',
+                                  style: TextStyle(
+                                    color: Color(0xff838391),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
                             ),
                             Expanded(
                               child: SizedBox(),
@@ -116,8 +145,18 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                         child: SizedBox(),
                       ),
                       Center(
-                          child: TextButton(
-                              onPressed: () {}, child: const Text('Edit')))
+                        child: TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            'Edit',
+                            style: TextStyle(
+                              color: Color(0xffFFB19D),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -145,15 +184,24 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                   const Expanded(
                     child: SizedBox(),
                   ),
-                  _itemProfile(src: 'assets/svgs/p_icon.svg'),
+                  _itemProfile(
+                      src: 'assets/svgs/p_icon.svg',
+                      text: 'Phone number',
+                      ntext: '+3746589923'),
                   const Expanded(
                     child: SizedBox(),
                   ),
-                  _itemProfile(src: 'assets/svgs/m_icon.svg'),
+                  _itemProfile(
+                      src: 'assets/svgs/m_icon.svg',
+                      text: 'Email',
+                      ntext: 'conrad@gmail.com'),
                   const Expanded(
                     child: SizedBox(),
                   ),
-                  _itemProfile(src: 'assets/svgs/sh_icon.svg'),
+                  _itemProfile(
+                      src: 'assets/svgs/sh_icon.svg',
+                      text: 'Completed projects',
+                      ntext: '248'),
                   const Expanded(
                     child: SizedBox(),
                   ),
@@ -191,7 +239,7 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                   child: const Text(
                     "About Me",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xff838391),
                       fontWeight: FontWeight.w500,
                       fontSize: 16.0,
                     ),
@@ -239,7 +287,8 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
     );
   }
 
-  Widget _itemProfile({required String src}) {
+  Widget _itemProfile(
+      {required String src, required String text, required String ntext}) {
     return Container(
       decoration: BoxDecoration(
         color: const Color.fromARGB(0, 0, 0, 0),
@@ -254,38 +303,39 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
           children: [
             Container(
               decoration: const BoxDecoration(
-                  color: Color.fromARGB(0, 0, 0, 0),
-                  border: Border(
-                    right: BorderSide(
-                      width: 1.0,
-                      color: Color.fromARGB(255, 10, 10, 10),
-                    ),
+                color: Color.fromARGB(0, 0, 0, 0),
+                border: Border(
+                  right: BorderSide(
+                    width: 1.0,
+                    color: Color(0xffECECEB),
                   ),
                 ),
+              ),
+              padding: const EdgeInsets.only(right: 10.0),
               height: 42.0,
-              width: 42.0,
+              width: 52.0,
               child: Center(
                 child: SvgPicture.asset(src),
               ),
             ),
             Expanded(
               child: Container(
-                
-                padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Expanded(
                         child: Text(
-                      'Phone number',
-                      style: TextStyle(
+                      text,
+                      style: const TextStyle(
                         color: Color(0xffFFFFFF),
                       ),
                     )),
                     Expanded(
                       child: Text(
-                        '+3746589923',
-                        style: TextStyle(
+                        ntext,
+                        style: const TextStyle(
                           color: Color(0xffFFFFFF),
                         ),
                       ),

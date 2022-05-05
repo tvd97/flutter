@@ -206,7 +206,9 @@ class _CustomerScreenBodyState extends State<CustomerScreenBody> {
           flex: 4,
         ),
         Expanded(
+        
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: Image.asset('assets/images/ctmit.png'),

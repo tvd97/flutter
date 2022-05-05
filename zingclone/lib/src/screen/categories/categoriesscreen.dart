@@ -161,7 +161,7 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                 color: const Color(
                   0xffFFFFFF,
                 ),
-                border: Border.all(width: 0.5)
+                border: Border.all(width: 1.0,color: const Color(0xffE2E2E0),)
               ),
               child: Center(
                 child: TextButton(

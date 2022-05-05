@@ -93,74 +93,129 @@ class _StartScreenBodyState extends State<StartScreenBody> {
               itemCount: data.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {
-                return Container(
-                  color: const Color.fromARGB(0, 115, 178, 238),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Center(
-                          child: Text(
-                            data[index].title,
-                            style: const TextStyle(fontSize: 70),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Center(child: Image.asset(data[index].src)),
-                      ),
-
-                      Expanded(
-                        child: Text(
-                          data[index].text,
-                          style: const TextStyle(fontSize: 20),
-                          textAlign: TextAlign.center,
-                        ),
-                        flex: 2,
-                      ),
-                      //_listGeneric(data.length),
-                    ],
-                  ),
-                );
+                return _pageViewItem(index);
               },
             ),
           ),
+          Container(
+            margin: const EdgeInsets.only(bottom: 30.0),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ...List.generate(
+                      data.length, (index) => _buidDot(index: index)),
+                ],
+              ),
+            ),
+          ),
           InkWell(
+            onTap: postion < data.length - 1
+                ? () {
+                    pageController.nextPage(
+                        duration: const Duration(microseconds: 300),
+                        curve: Curves.easeIn);
+                  }
+                : () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SigninScreen(),
+                      ),
+                    );
+                  },
             child: postion == data.length - 1
-                ? FloatingActionButton(
-                    child: _textButton(text: "Skip"),
-                    onPressed: () {},
-                  )
-                : Container(
-                    height: 60.0,
-                    margin: const EdgeInsets.symmetric(horizontal: 30),
-                    color: const Color(0xFF20C3AF),
-                    child: Center(
-                      child: _textButton(text: "Next"),
-                    ),
-                  ),
+                ? _buttonStart(text: "+", w: 60)
+                : _buttonStart(text: "Next", w: null),
           ),
         ],
       ),
     );
   }
 
-  Widget _textButton({required String text}) {
-    return TextButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const SigninScreen()),
-        );
-      },
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-          fontSize: 16.0,
+  Container _buttonStart({required String text, double? w}) {
+    return (w == null)
+        ? Container(
+            height: 60.0,
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            color: const Color(0xFF20C3AF),
+            child: Center(
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 16.0,color: Colors.white,),
+              ),
+            ),
+          )
+        : Container(
+            height: 60.0,
+            width: w,
+            decoration: BoxDecoration(
+              color: const Color(0xFF20C3AF),
+              borderRadius: BorderRadius.circular(
+                60.0,
+              ),
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            child: Center(
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 30.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+  }
+
+  Container _pageViewItem(int index) {
+    return Container(
+      color: const Color.fromARGB(0, 115, 178, 238),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Center(
+              child: Text(
+                data[index].title,
+                style: const TextStyle(fontSize: 70),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: Center(child: Image.asset(data[index].src)),
+          ),
+          Expanded(
+            child: Text(
+              data[index].text,
+              style: const TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
+            ),
+            flex: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buidDot({int? index}) {
+    return AnimatedContainer(
+      height: 10.0,
+      duration: const Duration(seconds: 2),
+      curve: Curves.fastOutSlowIn,
+      child: Center(
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10.0),
+          height: 10,
+          width: postion == index ? 20 : 10,
+          decoration: BoxDecoration(
+            color: postion == index
+                ? const Color(0xffB5C3C7)
+                : const Color(0xffCBD3D5),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
         ),
       ),
     );

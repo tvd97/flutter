@@ -66,8 +66,9 @@ class _DetailsCardScreenBodyState extends State<DetailsCardScreenBody> {
                 padding: const EdgeInsets.only(
                     top: 20.0, left: 23.0, right: 23.0, bottom: 19.0),
                 margin: const EdgeInsets.only(top: 50.0),
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  gradient: const LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment(0.7, 0.3),
                     colors: [
@@ -80,11 +81,21 @@ class _DetailsCardScreenBodyState extends State<DetailsCardScreenBody> {
                   children: [
                     Row(
                       children: const [
-                        Text('**** **** **** 1213'),
+                        Text(
+                          '**** **** **** 1213',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                         Expanded(
                           child: SizedBox(),
                         ),
-                        Text('10/24')
+                        Text(
+                          '10/24',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                     const Expanded(
@@ -95,9 +106,11 @@ class _DetailsCardScreenBodyState extends State<DetailsCardScreenBody> {
                       child: const Text(
                         '\$25,388',
                         style: TextStyle(
-                            fontSize: 25.0,
-                            fontFamily: 'Gilroy',
-                            fontWeight: FontWeight.w600),
+                          fontSize: 25.0,
+                          fontFamily: 'Gilroy',
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -240,7 +253,9 @@ class _DetailsCardScreenBodyState extends State<DetailsCardScreenBody> {
                   ],
                 ),
               ),
-              const Expanded(child: SizedBox(),),
+              const Expanded(
+                child: SizedBox(),
+              ),
               InkWell(
                 child: Container(
                   height: 60.0,

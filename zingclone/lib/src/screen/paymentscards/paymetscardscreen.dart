@@ -117,6 +117,7 @@ class _PaymetsCardScreenBodyState extends State<PaymetsCardScreenBody> {
       itemBuilder: (_, int index) {
         return Container(
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.0),
             color: const Color.fromARGB(0, 0, 0, 0),
             border: Border.all(width: 0.5, color: const Color(0xffE2E2E0)),
           ),
@@ -206,8 +207,8 @@ class _PaymetsCardScreenBodyState extends State<PaymetsCardScreenBody> {
                 Container(
                   margin: const EdgeInsets.only(right: 20.0),
                   width: 30.0,
-                  child: const Center(
-                    child: Text('Visa'),
+                  child: Center(
+                    child: Image.asset("assets/images/mcard.png"),
                   ),
                 ),
               ],

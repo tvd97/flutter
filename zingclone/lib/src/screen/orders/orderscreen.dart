@@ -33,12 +33,12 @@ class _OrderScreenBodyState extends State<OrderScreenBody> {
   }
 
   List<Orders> data = [
-    Orders(src: 'images/1.png', title: 'Balcony repair'),
-    Orders(src: 'images/2.png', title: 'Balcony repair'),
-    Orders(src: 'images/4.png', title: 'Balcony repair'),
-    Orders(src: 'images/3.png', title: 'Balcony repair'),
-    Orders(src: 'images/5.png', title: 'Balcony repair'),
-    Orders(src: 'images/6.png', title: 'Balcony repair'),
+    Orders(src: 'assets/images/1.png', title: 'Balcony repair'),
+    Orders(src: 'assets/images/2.png', title: 'Balcony repair'),
+    Orders(src: 'assets/images/4.png', title: 'Balcony repair'),
+    Orders(src: 'assets/images/3.png', title: 'Balcony repair'),
+    Orders(src: 'assets/images/5.png', title: 'Balcony repair'),
+    Orders(src: 'assets/images/6.png', title: 'Balcony repair'),
   ];
   Widget _orderBody() {
     return MediaQuery.removePadding(
