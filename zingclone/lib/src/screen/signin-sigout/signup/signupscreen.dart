@@ -26,155 +26,14 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   foregroundColor: Colors.black,
-      //   elevation: 0,
-      //   title: const Center(child: Text("Sign Up")),
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back_ios),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      //   actions: <Widget>[
-      //     IconButton(
-      //       onPressed: () {
-      //         Drawer(
-      //           elevation: 100.0,
-      //           child: Container(
-      //             width: 100.0,
-      //             child: Padding(
-      //               padding: const EdgeInsets.symmetric(vertical: 50.0),
-      //               child: Column(
-      //                 children: [
-      //                   Expanded(
-      //                     child: Column(
-      //                       children: [
-      //                         FloatingActionButton(
-      //                           onPressed: () {},
-      //                           child: const Icon(Icons.home),
-      //                         ),
-      //                         const Text('Messages'),
-      //                       ],
-      //                     ),
-      //                   ),
-      //                   Expanded(
-      //                     child: Column(
-      //                       children: [
-      //                         FloatingActionButton(
-      //                           onPressed: () {},
-      //                           child: const Icon(Icons.account_circle),
-      //                         ),
-      //                         const Text('Messages'),
-      //                       ],
-      //                     ),
-      //                   ),
-      //                   Expanded(
-      //                     child: Column(
-      //                       children: [
-      //                         FloatingActionButton(
-      //                           onPressed: () {},
-      //                           child: const Icon(
-      //                             Icons.settings,
-      //                           ),
-      //                         ),
-      //                         const Text('Messages'),
-      //                       ],
-      //                     ),
-      //                   ),
-      //                   Expanded(
-      //                     child: Column(
-      //                       children: [
-      //                         FloatingActionButton(
-      //                           onPressed: () {},
-      //                           child: const Icon(Icons.mail),
-      //                         ),
-      //                         const Text('Messages'),
-      //                       ],
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //           ),
-      //         )
-      //       },
-      //       icon: const Icon(Icons.menu),
-      //     ),
-      //   ],
-      // ),
       body: _signupBody(context),
-      drawer: _drawer(),
       resizeToAvoidBottomInset: false,
-    );
-  }
-
-  Drawer _drawer() {
-    return Drawer(
-      elevation: 100.0,
-      child: SizedBox(
-        width: 100.0,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50.0),
-          child: Column(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: const Icon(Icons.home),
-                    ),
-                    const Text('Messages'),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: const Icon(Icons.account_circle),
-                    ),
-                    const Text('Messages'),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: const Icon(
-                        Icons.settings,
-                      ),
-                    ),
-                    const Text('Messages'),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: const Icon(Icons.mail),
-                    ),
-                    const Text('Messages'),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
   Widget _signupBody(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
           Expanded(
@@ -213,7 +72,7 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
             ),
           ),
           const Expanded(child: SizedBox()),
-         Container(
+          Container(
             margin: const EdgeInsets.only(
               bottom: 20.0,
             ),
@@ -235,8 +94,9 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
                   child: const Text(
                     'Sign In',
                     style: TextStyle(
-                      color: Color(0xffFFB19D),
-                    ),
+                        fontSize: 16.0,
+                        color: Color(0xffFFB19D),
+                        decoration: TextDecoration.underline),
                   ),
                 ),
                 const Expanded(
@@ -338,8 +198,8 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
 
   Widget _contRow() {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20.0),
       height: 60.0,
-      margin: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         children: [
           Expanded(
@@ -358,6 +218,9 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
               ),
             ),
           ),
+          const SizedBox(
+            width: 8.0,
+          ),
           Expanded(
             child: InkWell(
               child: Container(
@@ -373,6 +236,9 @@ class _SignupScreenBodyState extends State<SignupScreenBody> {
                     Center(child: SvgPicture.asset('assets/svgs/t_icon.svg')),
               ),
             ),
+          ),
+          const SizedBox(
+            width: 8.0,
           ),
           Expanded(
             child: Container(

@@ -76,7 +76,7 @@ class _CustomerScreenBodyState extends State<CustomerScreenBody> {
                       style: TextStyle(
                           fontSize: 24.0,
                           fontFamily: 'Ubuntu',
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w900),
                     ),
                   ),
                 ),
@@ -87,9 +87,12 @@ class _CustomerScreenBodyState extends State<CustomerScreenBody> {
                   child: Text(
                     'The last completed works of the contractor are shown below.',
                     style: TextStyle(
-                        fontSize: 14.0,
-                        fontFamily: 'Gilroy',
-                        fontWeight: FontWeight.w500),
+                      height: 2.0,
+                      fontSize: 14.0,
+                      fontFamily: 'Gilroy',
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.8,
+                    ),
                   ),
                 ),
                 const Expanded(
@@ -129,18 +132,23 @@ class _CustomerScreenBodyState extends State<CustomerScreenBody> {
         children: const [
           Icon(
             Icons.star_rate_rounded,
+            color: Color(0xffFFB19D),
           ),
           Icon(
             Icons.star_rate_rounded,
+            color: Color(0xffFFB19D),
           ),
           Icon(
             Icons.star_rate_rounded,
+            color: Color(0xffFFB19D),
           ),
           Icon(
             Icons.star_rate_rounded,
+            color: Color(0xffFFB19D),
           ),
           Icon(
-            Icons.star_outline_rounded,
+            Icons.star_rate_rounded,
+            color: Color(0xffE2E2EF),
           ),
           Expanded(
             child: SizedBox(),
@@ -153,27 +161,25 @@ class _CustomerScreenBodyState extends State<CustomerScreenBody> {
   Widget _infoBox() {
     return Column(
       children: [
-        Expanded(
-          child: Container(
-            alignment: Alignment.centerLeft,
-            child: const Text(
-              'Details',
-              style: TextStyle(
-                  fontSize: 24.0,
-                  fontFamily: 'Ubuntu',
-                  fontWeight: FontWeight.w500),
-            ),
+        Container(
+          alignment: Alignment.centerLeft,
+          child: const Text(
+            'Details',
+            style: TextStyle(
+                fontSize: 24.0,
+                fontFamily: 'Ubuntu',
+                fontWeight: FontWeight.w900),
           ),
-          flex: 1,
         ),
         const Expanded(
           child: Text(
             'I have been working in this position for over 10 years! I have created many design solutions and I think my main best quality is creativity. If you liked my work, please contact me and see the professionalism and quality of my services.',
             style: TextStyle(
+                height: 2.0,
                 fontSize: 14.0,
                 fontFamily: 'Gilroy',
                 fontWeight: FontWeight.w500,
-                ),
+                letterSpacing: 0.8),
           ),
         ),
         Container(
@@ -206,7 +212,6 @@ class _CustomerScreenBodyState extends State<CustomerScreenBody> {
           flex: 4,
         ),
         Expanded(
-        
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

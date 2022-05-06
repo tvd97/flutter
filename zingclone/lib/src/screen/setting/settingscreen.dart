@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zingclone/src/screen/paymentscards/paymetscardscreen.dart';
+import 'package:zingclone/src/screen/signin-sigout/signin/signin.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -78,7 +78,7 @@ class _SettingScreenBodyState extends State<SettingScreenBody> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PaymetsCardScreen(),
+                            builder: (context) => const SigninScreen(),
                           ),
                         );
                     },

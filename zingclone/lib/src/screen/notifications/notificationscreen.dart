@@ -32,9 +32,27 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody> {
   }
 
   List<Notifications> entries = [
-    Notifications(id: 1, src: "", name: "", company: "", content: ""),
-    Notifications(id: 1, src: "", name: "", company: "", content: ""),
-    Notifications(id: 1, src: "", name: "", company: "", content: ""),
+    Notifications(
+        id: 1,
+        src: "assets/images/img.png",
+        name: "Joel Rowe",
+        company: "Bitrow Company",
+        content:
+            "David Coleman is ready to complete your assignment and get started soon! View David's profile and carefully review the order details. Then confirm the order."),
+    Notifications(
+        id: 1,
+        src: "assets/images/img.png",
+        name: "Cole Payne",
+        company: "Corporation Kraton",
+        content:
+            "We have found a contractor for your task \"Cleaning services\”. Please see the details."),
+    Notifications(
+        id: 1,
+        src: "assets/images/img.png",
+        name: "Elva Stone",
+        company: "Grand Service Company",
+        content:
+            "David Coleman is ready to complete your assignment and get started soon! View David's profile and carefully review the order details. Then confirm the order."),
   ];
   Widget _notificationScreenBody(BuildContext context) {
     return Column(
@@ -132,13 +150,12 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody> {
                   height: 60.0,
                   child: Row(
                     children: [
-                      const Center(
+                      Center(
                         child: SizedBox(
                           height: 54.0,
                           width: 54.0,
                           child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/img.png'),
+                            backgroundImage: AssetImage(entries[index].src),
                             radius: 54.0,
                           ),
                         ),
@@ -148,12 +165,11 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody> {
                           padding: const EdgeInsets.only(left: 10.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(entries[index].name),
                               Text(
-                                "Joel Rowe",
-                              ),
-                              Text(
-                                "Bitrow Company",
+                                entries[index].company,
                               ),
                             ],
                           ),
@@ -166,8 +182,15 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody> {
                   child: Container(
                     padding: const EdgeInsets.only(top: 8.0),
                     height: 100,
-                    child: const Text(
-                        'Sorry, all the artists in the Interior Design category are busy right now. If your task is still relevant - go to the task details page and click "Extend task”.'),
+                    child: Text(
+                      entries[index].content,
+                      style: const TextStyle(
+                        height: 2.0,
+                        fontSize: 14.0,
+                        fontFamily: 'Gilroy',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 )
               ],

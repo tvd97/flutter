@@ -90,7 +90,9 @@ class _SigninScreenBodyState extends State<SigninScreenBody> {
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(
+                      fontSize: 16.0,
                       color: Color(0xffFFB19D),
+                      decoration: TextDecoration.underline
                     ),
                   ),
                 ),

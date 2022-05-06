@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:zingclone/src/screen/start/model/startsceenmodel.dart';
+import 'package:zingclone/src/model/startsceenmodel.dart';
 import '../signin-sigout/signin/signin.dart';
 
 class StartScreen extends StatelessWidget {

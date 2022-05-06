@@ -33,12 +33,20 @@ class _OrderScreenBodyState extends State<OrderScreenBody> {
   }
 
   List<Orders> data = [
-    Orders(src: 'assets/images/1.png', title: 'Balcony repair'),
-    Orders(src: 'assets/images/2.png', title: 'Balcony repair'),
-    Orders(src: 'assets/images/4.png', title: 'Balcony repair'),
-    Orders(src: 'assets/images/3.png', title: 'Balcony repair'),
-    Orders(src: 'assets/images/5.png', title: 'Balcony repair'),
-    Orders(src: 'assets/images/6.png', title: 'Balcony repair'),
+    Orders(
+      src: 'assets/images/1.png',
+      title: 'Balcony repair',
+      price: 24,
+    ),
+    Orders(
+      src: 'assets/images/2.png',
+      title: 'Balcony repair',
+      price: 60,
+    ),
+    Orders(src: 'assets/images/4.png', title: 'Balcony repair', price: 42),
+    Orders(src: 'assets/images/3.png', title: 'Balcony repair', price: 54),
+    Orders(src: 'assets/images/5.png', title: 'Balcony repair', price: 38),
+    Orders(src: 'assets/images/6.png', title: 'Balcony repair', price: 52),
   ];
   Widget _orderBody() {
     return MediaQuery.removePadding(
@@ -105,7 +113,24 @@ class _OrderScreenBodyState extends State<OrderScreenBody> {
               const SizedBox(
                 height: 5.0,
               ),
-              Text(data[index].title),
+              Text(
+                data[index].title,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: 'Gilroy',
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.8,
+                ),
+              ),
+              Text(
+                '\$${data[index].price.toString()}',
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  fontFamily: 'Gilroy',
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.8,
+                ),
+              ),
             ],
           ))),
         );
@@ -120,12 +145,14 @@ class _OrderScreenBodyState extends State<OrderScreenBody> {
           child: InkWell(
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(
-                  width: 3.0,
-                  color: const Color(
-                    0xffE2E2E0,
-                  ),
+                color: const Color(
+                  0xffFFFFFF,
                 ),
+                border: Border.all(
+                    width: 1.0,
+                    color: const Color(
+                      0xffE2E2E0,
+                    )),
               ),
               child: const Center(child: Text("Skip")),
             ),
@@ -134,12 +161,9 @@ class _OrderScreenBodyState extends State<OrderScreenBody> {
         Expanded(
           child: InkWell(
             child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 3.0,
-                  color: const Color(
-                    0xff20C3AF,
-                  ),
+              decoration: const BoxDecoration(
+                color: Color(
+                  0xff20C3AF,
                 ),
               ),
               child: Center(
@@ -152,7 +176,9 @@ class _OrderScreenBodyState extends State<OrderScreenBody> {
                         ),
                       );
                     },
-                    child: const Text("Done")),
+                    child: const Text("Done",style:  TextStyle(color:  Color(
+                  0xffFFFFFF,
+                ),),)),
               ),
             ),
           ),

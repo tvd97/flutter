@@ -32,9 +32,15 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
   }
 
   List<Payment> payments = [
-    Payment(id: 1, src: 'assets/images/p1.png', text: 'Welding works', price: 40),
-    Payment(id: 2, src: 'assets/images/p2.png', text: 'Foundation works', price: 55),
-    Payment(id: 3, src: 'assets/images/p3.png', text: 'Waterproofing', price: 20),
+    Payment(
+        id: 1, src: 'assets/images/p1.png', text: 'Welding works', price: 40),
+    Payment(
+        id: 2,
+        src: 'assets/images/p2.png',
+        text: 'Foundation works',
+        price: 55),
+    Payment(
+        id: 3, src: 'assets/images/p3.png', text: 'Waterproofing', price: 20),
   ];
   int _total() {
     int total = 0;
@@ -46,7 +52,7 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
 
   Widget _constructionbody(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
       child: Column(
         children: [
           Container(
@@ -78,25 +84,39 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
           ),
           Expanded(
             flex: 2,
-            child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50.0),
+            child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      width: 1.0,
+                      color: Color(0xffF7F6F5),
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.only(top: 40.0),
                 child: Center(child: _listView())),
           ),
           SizedBox(
             height: 60.0,
             child: Row(
               children: [
-                const Text("Total",style: TextStyle(
-                        fontSize: 16.0,
-                        fontFamily: 'Gilroy',
-                        fontWeight: FontWeight.w500),),
+                const Text(
+                  "Total",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Gilroy',
+                      fontWeight: FontWeight.w600),
+                ),
                 const Expanded(
                   child: SizedBox(),
                 ),
-                Text('\$${_total().toString()}',style: const TextStyle(
-                        fontSize: 24.0,
-                        fontFamily: 'Gilroy',
-                        fontWeight: FontWeight.w500),),
+                Text(
+                  '\$${_total().toString()}',
+                  style: const TextStyle(
+                      fontSize: 24.0,
+                      fontFamily: 'Gilroy',
+                      fontWeight: FontWeight.w600),
+                ),
               ],
             ),
           ),
@@ -104,26 +124,24 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
             child: SizedBox(),
           ),
           InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CustomerScreen(),
+                ),
+              );
+            },
             child: Container(
               height: 60.0,
               color: const Color(0xFF20C3AF),
-              child: Center(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CustomerScreen(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "Check out",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.0,
-                    ),
+              child: const Center(
+                child: Text(
+                  "Check out",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
                   ),
                 ),
               ),
@@ -139,6 +157,8 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
                 'Continue Shopping',
                 style: TextStyle(
                   color: Color(0xffFFB19D),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.0,
                 ),
               ),
             ),
@@ -153,14 +173,14 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
       itemCount: payments.length,
       itemBuilder: (_, int index) {
         return Container(
-          margin: const EdgeInsets.symmetric(vertical: 5.0),        
+          margin: const EdgeInsets.symmetric(vertical: 5.0),
           height: 60,
           child: Row(
             children: [
               SizedBox(
                 width: 60,
                 child: Center(child: Image.asset(payments[index].src)),
-              ),            
+              ),
               Container(
                 padding: const EdgeInsets.only(left: 20.0),
                 child: FittedBox(
@@ -170,7 +190,7 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
                     style: const TextStyle(
                         fontSize: 16.0,
                         fontFamily: 'Gilroy',
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
               ),

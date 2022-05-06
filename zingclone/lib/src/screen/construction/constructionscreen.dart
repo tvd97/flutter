@@ -155,8 +155,7 @@ class _ConstructionScreenBodyState extends State<ConstructionScreenBody> {
       itemBuilder: (_, int index) {
         return Container(
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 255, 255, 255),
-            border: Border.all(width: 0.5, color: Colors.black),
+            border: Border.all(width: 0.5, color: entries[index].color),
           ),
           margin: const EdgeInsets.symmetric(vertical: 5.0),
           alignment: Alignment.center,
@@ -204,6 +203,7 @@ class _ConstructionScreenBodyState extends State<ConstructionScreenBody> {
             ),
           ),
         ),
+        const SizedBox(width: 15.0,),
         Expanded(
           child: InkWell(
             child: Container(

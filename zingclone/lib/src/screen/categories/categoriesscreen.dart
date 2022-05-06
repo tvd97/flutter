@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:zingclone/src/screen/common/drawer.dart';
+import 'package:zingclone/src/screen/paymentscards/paymetscardscreen.dart';
 import 'package:zingclone/src/screen/profile/profilesrceen.dart';
-import 'package:zingclone/src/screen/setting/settingscreen.dart';
-
 import '../../model/categoriesmodel.dart';
+import '../common/appbar.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -48,25 +49,19 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Categories")),
-        leading: const Icon(Icons.arrow_back_ios),
-        actions: const <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Icon(Icons.menu_outlined),
-          )
-        ],
-      ),
-      body: _categoriesbody(),
+      body: Builder(builder: (context) {
+        return _categoriesbody();
+      }),
+      endDrawer: const CommonDrawer(),
     );
   }
 
   Widget _categoriesbody() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
+           CommonAppBar(title:"Categories",),
           Container(
             margin: const EdgeInsets.only(top: 30.0),
             padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -79,7 +74,9 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                   margin: const EdgeInsets.only(left: 10.0),
                   child: const Icon(Icons.search),
                 ),
-                 const SizedBox(width: 10.0,),
+                const SizedBox(
+                  width: 10.0,
+                ),
                 Expanded(
                   child: Container(
                     margin: const EdgeInsets.only(right: 10.0),
@@ -126,6 +123,7 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
           child: Row(
             children: [
               Container(
+                margin: const EdgeInsets.only(right: 16.0),
                 height: 80,
                 width: 80,
                 color: const Color.fromARGB(255, 232, 236, 236),
@@ -133,7 +131,6 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                   child: SvgPicture.asset(entries[index].icon),
                 ),
               ),
-              const Spacer(),
               Text(
                 "Item ${entries[index].name}",
                 textAlign: TextAlign.start,
@@ -156,63 +153,63 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
       children: [
         Expanded(
           child: InkWell(
-            child: Container(
-              decoration:  BoxDecoration(
-                color: const Color(
-                  0xffFFFFFF,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PaymetsCardScreen(),
                 ),
-                border: Border.all(width: 1.0,color: const Color(0xffE2E2E0),)
-              ),
-              child: Center(
-                child: TextButton(
-                  child: const Text(
-                    "Back",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.0,
-                    ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: const Color(
+                    0xffFFFFFF,
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SettingScreen(),
-                      ),
-                    );
-                  },
+                  border: Border.all(
+                    width: 1.0,
+                    color: const Color(0xffE2E2E0),
+                  )),
+              child: const Center(
+                child: Text(
+                  "Back",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        const SizedBox(width: 3.0,),
+        const SizedBox(
+          width: 15.0,
+        ),
         Expanded(
           child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileScreen(),
+                ),
+              );
+            },
             child: Container(
               decoration: const BoxDecoration(
                 color: Color(
                   0xff20C3AF,
                 ),
               ),
-              child: Center(
-                child: TextButton(
-                  child: const Text(
-                    "Next",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.0,
-                    ),
+              child: const Center(
+                child: Text(
+                  "Next",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProfileScreen(),
-                      ),
-                    );
-                  },
                 ),
               ),
             ),

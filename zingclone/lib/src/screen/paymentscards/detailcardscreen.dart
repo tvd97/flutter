@@ -26,11 +26,11 @@ class _DetailsCardScreenBodyState extends State<DetailsCardScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _notificationScreenBody(context),
+      body: _cardScreenBody(context),
     );
   }
 
-  Widget _notificationScreenBody(BuildContext context) {
+  Widget _cardScreenBody(BuildContext context) {
     return Column(
       children: [
         Expanded(
