@@ -61,54 +61,68 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
-           CommonAppBar(title:"Categories",),
+          CommonAppBar(
+            title: "Categories",
+          ),
           Container(
             margin: const EdgeInsets.only(top: 30.0),
             padding: const EdgeInsets.symmetric(horizontal: 30),
             height: 60.0,
             color: const Color.fromARGB(255, 235, 234, 234),
             alignment: Alignment.center,
-            child: Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(left: 10.0),
-                  child: const Icon(Icons.search),
-                ),
-                const SizedBox(
-                  width: 10.0,
-                ),
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 10.0),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search by categories ',
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            child: _searchByCategoriesTextFiled(),
           ),
           Expanded(
             flex: 6,
             child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Center(child: _listView())),
+                child: Center(child: _listView(),),),
           ),
           Expanded(
             child: Container(
               height: 60.0,
               padding: const EdgeInsets.only(bottom: 40.0),
-              child: InkWell(
-                child: _contButton(context),
-              ),
+              child: Row(children: [
+                Expanded(
+                  child: _backButton(context),
+                ),
+                const SizedBox(
+                  width: 15.0,
+                ),
+                Expanded(
+                  child: _nextButton(context),
+                ),
+              ]),
             ),
             flex: 1,
           ),
         ],
       ),
+    );
+  }
+
+  Row _searchByCategoriesTextFiled() {
+    return Row(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(left: 10.0),
+          child: const Icon(Icons.search),
+        ),
+        const SizedBox(
+          width: 10.0,
+        ),
+        Expanded(
+          child: Container(
+            margin: const EdgeInsets.only(right: 10.0),
+            child: const TextField(
+              decoration: InputDecoration(
+                hintText: 'Search by categories ',
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -118,7 +132,6 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
       itemBuilder: (_, int index) {
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 5.0),
-          //color: const Color.fromARGB(255, 255, 255, 255),
           alignment: Alignment.center,
           child: Row(
             children: [
@@ -148,74 +161,66 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
     );
   }
 
-  Widget _contButton(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PaymetsCardScreen(),
-                ),
-              );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                  color: const Color(
-                    0xffFFFFFF,
-                  ),
-                  border: Border.all(
-                    width: 1.0,
-                    color: const Color(0xffE2E2E0),
-                  )),
-              child: const Center(
-                child: Text(
-                  "Back",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
-              ),
+  InkWell _nextButton(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ProfileScreen(),
+          ),
+        );
+      },
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Color(
+            0xff20C3AF,
+          ),
+        ),
+        child: const Center(
+          child: Text(
+            "Next",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 16.0,
             ),
           ),
         ),
-        const SizedBox(
-          width: 15.0,
-        ),
-        Expanded(
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ProfileScreen(),
-                ),
-              );
-            },
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Color(
-                  0xff20C3AF,
-                ),
-              ),
-              child: const Center(
-                child: Text(
-                  "Next",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
-              ),
+      ),
+    );
+  }
+
+  InkWell _backButton(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PaymetsCardScreen(),
+          ),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: const Color(
+              0xffFFFFFF,
+            ),
+            border: Border.all(
+              width: 1.0,
+              color: const Color(0xffE2E2E0),
+            )),
+        child: const Center(
+          child: Text(
+            "Back",
+            style: TextStyle(
+              color: Color.fromARGB(255, 0, 0, 0),
+              fontWeight: FontWeight.w500,
+              fontSize: 16.0,
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }
