@@ -45,7 +45,7 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody> {
         name: "Cole Payne",
         company: "Corporation Kraton",
         content:
-            "We have found a contractor for your task \"Cleaning services\”. Please see the details."),
+            'We have found a contractor for your task "Cleaning services”. Please see the details.'),
     Notifications(
         id: 1,
         src: "assets/images/img.png",

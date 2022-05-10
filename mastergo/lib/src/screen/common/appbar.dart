@@ -24,7 +24,7 @@ class CommonAppBar extends StatelessWidget {
               : SizedBox(
                   child: Center(
                     child: Text(
-                      ' ${title}',
+                      ' $title',
                       style: const TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.w600,
