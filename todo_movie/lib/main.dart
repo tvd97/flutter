@@ -6,12 +6,12 @@ import '../src/screen/home/homescreen.dart';
 
 void main() {
   runApp( 
-    DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) =>
+    // DevicePreview(
+    // enabled: !kReleaseMode,
+    // builder: (context) =>
+    // const MyApp()
+    // ),
     const MyApp()
-    ),
-   // const MyApp()
     );
 }
 
@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
       title: 'Flutter Demo',
       theme: ThemeData(       
         primarySwatch: Colors.blue,

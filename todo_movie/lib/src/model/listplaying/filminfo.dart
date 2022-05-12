@@ -1,33 +1,35 @@
+import 'package:todo_movie/src/common/number_common.dart';
+
 class FilmInfo {
-  bool adult;
-  String srcBackdrop;
-  List<int> idGenres;
-  int id;
-  String language;
-  String originalTitle;
-  String overview;
-  double popularity;
-  String srcPoster;
-  String releaseDate;
-  String title;
-  bool video;
-  double avgVote;
-  int countVote;
+  bool? adult;
+  String? srcBackdrop;
+  List<int>? idGenres;
+  int? id;
+  String? language;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? srcPoster;
+  String? releaseDate;
+  String? title;
+  bool? video;
+  double? avgVote;
+  int? countVote;
   FilmInfo({
-    required this.id,
-    required this.adult,
-    required this.avgVote,
-    required this.title,
-    required this.originalTitle,
-    required this.overview,
-    required this.countVote,
-    required this.idGenres,
-    required this.language,
-    required this.popularity,
-    required this.releaseDate,
-    required this.srcBackdrop,
-    required this.srcPoster,
-    required this.video,
+    this.id,
+    this.adult,
+    this.avgVote,
+    this.title,
+    this.originalTitle,
+    this.overview,
+    this.countVote,
+    this.idGenres,
+    this.language,
+    this.popularity,
+    this.releaseDate,
+    this.srcBackdrop,
+    this.srcPoster,
+    this.video,
   });
   factory FilmInfo.fromJson(Map<String, dynamic> json) {
     List<int> genreids = [];
@@ -37,7 +39,7 @@ class FilmInfo {
     return FilmInfo(
         id: json['id'],
         adult: json['adult'],
-        avgVote: json['vote_average'],
+        avgVote: NumberCommon.checkDouble(json['vote_average']),
         title: json['title'],
         originalTitle: json['original_title'],
         overview: json['overview'],

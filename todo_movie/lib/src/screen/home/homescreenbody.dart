@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'package:todo_movie/src/model/listplaying/listfilmonplay.dart';
+import 'package:todo_movie/src/model/home/homebutton.dart';
+import 'package:todo_movie/src/model/listplaying/filminfo.dart';
+import 'package:todo_movie/src/model/listplaying/filmonplay.dart';
 import 'package:todo_movie/src/network/networkapi.dart';
+import 'package:todo_movie/src/screen/home/buiderapi.dart';
+import 'package:todo_movie/src/screen/home/menubottombar.dart';
+import 'package:todo_movie/src/screen/home/tabgrivew.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({Key? key}) : super(key: key);
@@ -12,9 +16,20 @@ class HomeScreenBody extends StatefulWidget {
 
 class _HomeScreenBodyState extends State<HomeScreenBody>
     with TickerProviderStateMixin {
-  final String uriimg = 'https://image.tmdb.org/t/p/w300';
-  final String url =
+  final List<HomeButton> data = [
+    HomeButton(data: Icons.star, text: 'Discover'),
+    HomeButton(data: Icons.menu_open, text: 'My List'),
+    HomeButton(data: Icons.search, text: 'Search'),
+    HomeButton(data: Icons.newspaper, text: 'News'),
+    HomeButton(data: Icons.settings, text: 'Settings')
+  ];
+  String uri = 'https://image.tmdb.org/t/p/w300';
+  final String urlOnPlay =
       'https://api.themoviedb.org/3/movie/now_playing?api_key=d79d9f8467a0e6d7b24624c522cb2ab3';
+
+  final String urlUpcoming =
+      'https://api.themoviedb.org/3/movie/upcoming?api_key=d79d9f8467a0e6d7b24624c522cb2ab3';
+  double blur = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,141 +39,56 @@ class _HomeScreenBodyState extends State<HomeScreenBody>
     );
   }
 
-  late Future<ListFilmOnPlaying> listFilmOnPlaying;
-
+  late Future<FilmOnPlaying> filmUpComing;
+  late Future<FilmOnPlaying> listFilmOnPlaying;
   late TabController _tabController;
+  late List<FilmInfo> result;
   @override
   initState() {
     super.initState();
-    listFilmOnPlaying = NetworkAPI(url).featchData();
-    _tabController = TabController(length: 4, vsync: this);
+    listFilmOnPlaying = NetworkAPI(urlOnPlay).fetchFilmAPI();
+    filmUpComing = NetworkAPI(urlUpcoming).fetchFilmAPI();
+    _tabController = TabController(
+      length: 4,
+      vsync: this,
+      initialIndex: 0,
+    );
   }
 
   List<String> title = ['Top Lists', 'Gen\'es', 'In Theaters', 'Upcoming'];
   Widget _body() {
+    print(BuilderAPI().blur);
     return Stack(
       children: [
-        Container(
-          child: _gridviewAPI(),
-        ),
-        Align(
-          alignment: Alignment.topCenter,
+        TabBarView(controller: _tabController, children: [
+          BuilderAPI(uri: uri, future: listFilmOnPlaying),
+          BuilderAPI(uri: uri, future: listFilmOnPlaying),
+          BuilderAPI(uri: uri, future: listFilmOnPlaying),
+          BuilderAPI(uri: uri, future: filmUpComing),
+        ]),
+        Positioned(
+          top: 0.0,
+          left: 0.0,
+          right: 0.0,
           child: Container(
+            key: const Key('tabbar'),
+            height: 40.0,
             color: const Color(0xff525464),
-            child: TabBar(
-                controller: _tabController,
-                labelColor: const Color.fromARGB(0, 0, 0, 0),
-                tabs: <Widget>[
-                  Tab(
-                    child: Text(title[0]),
-                  ),
-                  Tab(
-                    child: Text(title[1]),
-                  ),
-                  Tab(
-                    child: Text(title[2]),
-                  ),
-                  Tab(
-                    child: Text(title[3]),
-                  ),
-                ]),
+            child: Center(
+              
+              child: TabGridview(tabController: _tabController, title: title,blur:BuilderAPI().blur),
+            ),
           ),
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: _bottomMenu(),
-        ),
-      ],
-    );
-  }
-
-  FutureBuilder<ListFilmOnPlaying> _gridviewAPI() {
-    return FutureBuilder<ListFilmOnPlaying>(
-      future: listFilmOnPlaying,
-      builder: (context, snapshot) {
-        // ignore: unnecessary_null_comparison
-        if (snapshot != null) {
-          return _gridviewBuiderItem(snapshot);
-        } else {
-          return const Center(
-            child: Text('khong load du lieu'),
-          );
-        }
-      },
-    );
-  }
-
-  GridView _gridviewBuiderItem(AsyncSnapshot<ListFilmOnPlaying> snapshot) {
-    return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 0.5,
-            mainAxisSpacing: 2.5,
-            childAspectRatio: 3 / 4,
-          ),
-          itemCount: snapshot.data?.result.length,
-          itemBuilder: (_, index) {
-            return SizedBox(
-              child: Center(
-                child: Image.network(
-                    uriimg + '${snapshot.data?.result[index].srcPoster}'),
-              ),
-            );
-          },
-        );
-  }
-
-  Container _bottomMenu() {
-    return Container(
-      padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 5.0),
-      color: const Color(0xff525464),
-      height: 70.0,
-      child: _bottomItemMenu(),
-    );
-  }
-
-  Row _bottomItemMenu() {
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            children: const [
-              Expanded(
-                child: Icon(Icons.star),
-              ),
-              Expanded(child: Text('dads')),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            children: const [
-              Expanded(
-                child: Icon(Icons.star),
-              ),
-              Expanded(child: Text('dads')),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            children: const [
-              Expanded(
-                child: Icon(Icons.star),
-              ),
-              Expanded(child: Text('dads')),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            children: const [
-              Expanded(
-                child: Icon(Icons.star),
-              ),
-              Expanded(child: Text('dads')),
-            ],
-          ),
+        
+        Positioned(
+          bottom: 0.0,
+          left: 0.0,
+          right: 0.0,
+          child: Container(
+              color: const Color(0xff525464),
+              height: 70.0,
+              child: MenuBottomBar(data: data)),
         ),
       ],
     );

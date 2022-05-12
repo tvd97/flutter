@@ -1,12 +1,25 @@
+// ignore_for_file: prefer_collection_literals
+
 class Languages {
-// ignore: non_constant_identifier_names
-  String english_name;
-  String iso_639_1;
-  String name;
-  Languages({
-// ignore: non_constant_identifier_names
-    required this.english_name,
-    required this.iso_639_1,
-    required this.name,
-  });
+  String? englishName;
+  String? iso6391;
+  String? name;
+
+  Languages({this.englishName, this.iso6391, this.name});
+
+  factory Languages.fromJson(Map<String, dynamic> json) {
+    return Languages(
+      englishName: json['english_name'],
+      iso6391: json['iso_639_1'],
+      name: json['name'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data =  Map<String, dynamic>();
+    data['english_name'] = englishName;
+    data['iso_639_1'] = iso6391;
+    data['name'] = name;
+    return data;
+  }
 }
