@@ -57,7 +57,6 @@ class _HomeScreenBodyState extends State<HomeScreenBody>
 
   List<String> title = ['Top Lists', 'Gen\'es', 'In Theaters', 'Upcoming'];
   Widget _body() {
-    print(BuilderAPI().blur);
     return Stack(
       children: [
         TabBarView(controller: _tabController, children: [
