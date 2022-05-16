@@ -46,8 +46,8 @@ class _HomeScreenBodyState extends State<HomeScreenBody>
   @override
   initState() {
     super.initState();
-    listFilmOnPlaying = NetworkAPI(urlOnPlay).fetchFilmAPI();
-    filmUpComing = NetworkAPI(urlUpcoming).fetchFilmAPI();
+    listFilmOnPlaying = NetworkAPI().fetchFilmAPI(urlOnPlay);
+    filmUpComing = NetworkAPI().fetchFilmAPI(urlUpcoming);
     _tabController = TabController(
       length: 4,
       vsync: this,
